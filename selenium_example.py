@@ -2,18 +2,19 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 
 opts = Options()
-opts.set_headless()
-assert opts.headless
+#opts.set_headless()
+#assert opts.headless
 
 browser = Chrome(options=opts)
-browser.get("https://google.co.uk")
+browser.get("https://accounts.spotify.com/en/login/")
 
-search_form = browser.find_element_by_class_name("gLFyf.gsfi")
-search_form.send_keys("python")
-search_form.submit()
+# username
+browser.find_element_by_id("login-username").send_keys("")
+# password
+browser.find_element_by_id("login-password").send_keys("")
+# click 'log in' button
+browser.find_element_by_id("login-buton").click()
 
-results = browser.find_elements_by_class_name("result")
-print(results[0].text)
 
 browser.close()
 quit()
